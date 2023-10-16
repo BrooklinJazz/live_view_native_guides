@@ -50,7 +50,9 @@ defmodule PicMap.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:live_view_native, "~> 0.1"},
+      {:live_view_native_swift_ui, "~> 0.1"}
     ]
   end
 
