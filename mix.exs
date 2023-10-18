@@ -1,15 +1,20 @@
 defmodule PicMap.MixProject do
   use Mix.Project
 
+  @version "0.0.1"
+  @source_url "https://github.com/brooklin_jazz/pic_map"
+
   def project do
     [
       app: :pic_map,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      docs: docs(),
+      package: package()
     ]
   end
 
@@ -52,8 +57,52 @@ defmodule PicMap.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.5"},
       {:live_view_native, "~> 0.1"},
-      {:live_view_native_swift_ui, "~> 0.1"}
+      {:live_view_native_swift_ui, "~> 0.1"},
+      {:kino, "~> 0.10.0"},
+      {:ex_doc, "~> 0.30.8"}
     ]
+  end
+
+  defp docs do
+    [
+      source_ref: "v#{@version}",
+      main: "overview",
+      logo: "guides/assets/images/logo.png",
+      assets: "guides/assets",
+      extra_section: "GUIDES",
+      extras: [
+        "guides/pic_map/installation.md",
+
+      ],
+      groups_for_extras: [
+        "MapPic": ~r/map_pic/
+      ]
+    ]
+  end
+
+  defp extras do
+    [
+      "guides/introduction/overview.md",
+      "guides/introduction/installation.md",
+      "guides/introduction/your-first-native-liveview.md",
+      "guides/introduction/troubleshooting.md",
+      "guides/common-features/template-syntax.md",
+      "guides/common-features/modifiers.md",
+      "guides/common-features/render-patterns.md",
+      "guides/common-features/handling-events.md"
+    ]
+  end
+
+    # Hex package configuration
+  defp package do
+    %{
+      maintainers: ["Brooklin Myers"],
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => @source_url
+      },
+      source_url: @source_url
+    }
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

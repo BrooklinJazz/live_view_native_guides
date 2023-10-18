@@ -1,0 +1,304 @@
+# Untitled notebook
+
+```elixir
+# my_app_root = Path.join(__DIR__, "..")
+
+# Mix.install(
+#   [
+#     {:pic_map, path: my_app_root, env: :dev}
+#   ],
+#   config_path: Path.join(my_app_root, "config/config.exs"),
+#   lockfile: Path.join(my_app_root, "mix.lock"),
+#   force: true
+# )
+```
+
+## Test
+
+<!-- livebook:{"attrs":{"action":":index","code":"defmodule PicMapWeb.InjectedLive do\n  use Phoenix.LiveView\n  use LiveViewNative.LiveView\n\n  @impl true\n  def render(%{platform_id: :swiftui} = assigns) do\n    # This UI renders on the iPhone / iPad app\n    ~SWIFTUI\"\"\"\n    <VStack>\n      <Text>\n        WAHOOO\n      </Text>\n    </VStack>\n    \"\"\"\n  end\n\n  @impl true\n  def render(%{} = assigns) do\n    # This UI renders on the web\n    ~H\"\"\"\n    <div class=\"flex w-full h-screen items-center\">\n      <span class=\"w-full text-center\">\n        Reloading again again\n      </span>\n    </div>\n    \"\"\"\n  end\nend","path":"/"},"chunks":null,"kind":"Elixir.KinoNative.SmartCell","livebook_object":"smart_cell"} -->
+
+```elixir
+import Kernel, except: [defmodule: 2]
+import KinoNative.SmartCell, only: [defmodule: 2, register: 2]
+
+defmodule PicMapWeb.InjectedLive do
+  use Phoenix.LiveView
+  use LiveViewNative.LiveView
+
+  @impl true
+  def render(%{platform_id: :swiftui} = assigns) do
+    # This UI renders on the iPhone / iPad app
+    ~SWIFTUI"""
+    <VStack>
+      <Text>
+        WAHOOO
+      </Text>
+    </VStack>
+    """
+  end
+
+  @impl true
+  def render(%{} = assigns) do
+    # This UI renders on the web
+    ~H"""
+    <div class="flex w-full h-screen items-center">
+      <span class="w-full text-center">
+        Reloading again again
+      </span>
+    </div>
+    """
+  end
+end
+|> register("/")
+
+import KinoNative.SmartCell, only: []
+import Kernel
+:ok
+```
+
+```elixir
+Phoenix.CodeReloader.reload!(PicMapWeb.Endpoint, [])
+```
+
+```elixir
+Code.ensure_loaded?(PicMapWeb.InjectedLive)
+```
+
+```elixir
+
+```
+
+```elixir
+# Kino.SmartCell.register(KinoNative.SmartCell)
+```
+
+```elixir
+
+```
+
+<!-- livebook:{"attrs":{"action":":index","code":"defmodule PicMapWeb.InjectedLive do\n  use Phoenix.LiveView\n  use LiveViewNative.LiveView\n\n  @impl true\n  def render(%{platform_id: :swiftui} = assigns) do\n    # This UI renders on the iPhone / iPad app\n    ~SWIFTUI\"\"\"\n    <VStack>\n      <Text>\n        Hello native!\n      </Text>\n    </VStack>\n    \"\"\"\n  end\n\n  @impl true\n  def render(%{} = assigns) do\n    # This UI renders on the web\n    ~H\"\"\"\n    <div class=\"flex w-full h-screen items-center\">\n      <span class=\"w-full text-center\">\n        Super right?\n      </span>\n    </div>\n    \"\"\"\n  end\nend","path":"/"},"chunks":null,"kind":"Elixir.KinoNative.SmartCell","livebook_object":"smart_cell"} -->
+
+```elixir
+import Kernel, except: [defmodule: 2]
+import KinoNative.SmartCell, only: [defmodule: 2, register: 2]
+
+defmodule PicMapWeb.InjectedLive do
+  use Phoenix.LiveView
+  use LiveViewNative.LiveView
+
+  @impl true
+  def render(%{platform_id: :swiftui} = assigns) do
+    # This UI renders on the iPhone / iPad app
+    ~SWIFTUI"""
+    <VStack>
+      <Text>
+        Hello native!
+      </Text>
+    </VStack>
+    """
+  end
+
+  @impl true
+  def render(%{} = assigns) do
+    # This UI renders on the web
+    ~H"""
+    <div class="flex w-full h-screen items-center">
+      <span class="w-full text-center">
+        Super right?
+      </span>
+    </div>
+    """
+  end
+end
+|> register("/")
+
+import KinoNative.SmartCell, only: []
+import Kernel
+:ok
+```
+
+```elixir
+
+```
+
+```elixir
+import Kernel, except: [defmodule: 2]
+import KinoNative, only: [defmodule: 2]
+```
+
+```elixir
+defmodule PicMapWeb.InjectedLive do
+  use Phoenix.LiveView
+  use LiveViewNative.LiveView
+
+  @impl true
+  def render(%{platform_id: :swiftui} = assigns) do
+    # This UI renders on the iPhone / iPad app
+    ~SWIFTUI"""
+    <VStack>
+      <Text>
+        Hello native!
+      </Text>
+    </VStack>
+    """
+  end
+
+  @impl true
+  def render(%{} = assigns) do
+    # This UI renders on the web
+    ~H"""
+    <div class="flex w-full h-screen items-center">
+      <span class="w-full text-center">
+        Super right?
+      </span>
+    </div>
+    """
+  end
+end
+```
+
+```elixir
+defmodule Route do
+  defstruct [:path, :module, :action]
+end
+```
+
+```elixir
+defmodule Routes do
+  def get_routes() do
+    Application.get_env(:kino_live_view_native, :routes, [])
+  end
+
+  def put_routes(routes) do
+    Application.put_env(:kino_live_view_native, :routes, routes)
+  end
+end
+```
+
+```elixir
+
+```
+
+```elixir
+defmodule KinoLiveViewNative.Livebook do
+  defmacro defmodule(alias, do_block) do
+    module_name =
+      alias
+      |> Macro.to_string()
+      |> then(&("Elixir." <> &1))
+      |> String.to_atom()
+
+    if is_registered_live_view?(module_name) do
+      IO.inspect("Replacing existing LiveView #{module_name}")
+      Livebook.Runtime.Evaluator.delete_module(module_name)
+    end
+
+    route = %Route{path: "/test", action: :example, module: PicMapWeb.InjectedLive}
+
+    # I'm a bit worried about putting a route in before the module is defined.
+    Routes.put_routes([route])
+
+    quote do
+      Kernel.defmodule(unquote(alias), unquote(do_block))
+    end
+  end
+
+  defp is_registered_live_view?(module_name) do
+    Routes.get_routes()
+    |> Enum.any?(&(&1.module == module_name))
+  end
+end
+```
+
+```elixir
+import Kernel, except: [defmodule: 2]
+import KinoLiveViewNative.Livebook, only: [defmodule: 2]
+```
+
+```elixir
+defmodule PicMapWeb.InjectedLive do
+  use Phoenix.LiveView
+  use LiveViewNative.LiveView
+
+  @impl true
+  def render(%{platform_id: :swiftui} = assigns) do
+    # This UI renders on the iPhone / iPad app
+    ~SWIFTUI"""
+    <VStack>
+      <Text>
+        Hello native!
+      </Text>
+    </VStack>
+    """
+  end
+
+  @impl true
+  def render(%{} = assigns) do
+    # This UI renders on the web
+    ~H"""
+    <div class="flex w-full h-screen items-center">
+      <span class="w-full text-center">
+        Super cool
+      </span>
+    </div>
+    """
+  end
+end
+```
+
+```elixir
+Livebook.Runtime.Evaluator.delete_module(PicMapWeb.InjectedLive)
+
+defmodule PicMapWeb.InjectedLive do
+  use Phoenix.LiveView
+  use LiveViewNative.LiveView
+
+  @impl true
+  def render(%{platform_id: :swiftui} = assigns) do
+    # This UI renders on the iPhone / iPad app
+    ~SWIFTUI"""
+    <VStack>
+      <Text>
+        Hello native!
+      </Text>
+    </VStack>
+    """
+  end
+
+  @impl true
+  def render(%{} = assigns) do
+    # This UI renders on the web
+    ~H"""
+    <div class="flex w-full h-screen items-center">
+      <span class="w-full text-center">
+        Changes are live!
+      </span>
+    </div>
+    """
+  end
+end
+
+route = %Route{path: "/test", action: :example, module: PicMapWeb.InjectedLive}
+
+Routes.put_routes([route])
+
+Routes.get_routes()
+```
+
+```elixir
+# defmodule Test do
+#   def test do
+#     "example"
+#   end
+# end
+
+defmodule Test do
+  def test do
+    "example1"
+  end
+end
+```
+
+```elixir
+Test.test()
+```

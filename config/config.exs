@@ -20,7 +20,10 @@ config :pic_map, PicMapWeb.Endpoint,
     layout: false
   ],
   pubsub_server: PicMap.PubSub,
-  live_view: [signing_salt: "KKkCHmXo"]
+  live_view: [signing_salt: "KKkCHmXo"],
+  # Reloadable Apps
+  reloadable_apps: [:pic_map],
+  reloadable_compilers: [:gettext, :elixir]
 
 # Configures the mailer
 #

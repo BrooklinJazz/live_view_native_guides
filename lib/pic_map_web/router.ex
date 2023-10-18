@@ -14,10 +14,13 @@ defmodule PicMapWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", PicMapWeb do
+  scope "/" do
     pipe_through :browser
 
-    get "/", PageController, :home
+    KinoNative.SmartCell.get_routes()
+    |> Enum.map(fn %{path: path, module: module, action: action} ->
+      live(path, module, action)
+    end)
   end
 
   # Other scopes may use custom stacks.
