@@ -67,16 +67,14 @@ defmodule PicMap.MixProject do
     [
       source_ref: "v#{@version}",
       main: "overview",
+      source_url: @source_url,
       logo: "guides/assets/images/logo.png",
       assets: "guides/assets",
       extra_section: "GUIDES",
       extras: [
-        "guides/pic_map/installation.md",
-
+        "guides/overview.md",
+        "guides/getting_started.livemd",
       ],
-      groups_for_extras: [
-        "MapPic": ~r/map_pic/
-      ]
     ]
   end
 

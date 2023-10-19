@@ -16,3 +16,20 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+## Course Overview
+
+<!-- course-outline-start -->
+* Navigation
+* Elements & Modifiers
+* Event Bindings
+* Forms & Validation
+* Streams and PubSub
+* Maps
+* Event Bindings
+* Location
+* Camera
+* Notifications
+
+<!-- course-outline-end -->
+

@@ -2,11 +2,9 @@
 
 ## Prerequisites
 
-* [Getting Started](./getting_started.livemd)
+* [Getting Started](getting_started.livemd)
 
-* [Prerequisites]()
-
-* [MapPic: Web]()
+* [MapPic: Web](map_pic_web.livemd)
 
 * [MapPic: IOS]()
 
