@@ -1,12 +1,12 @@
-defmodule PicMapWeb do
+defmodule LiveViewNativeGuidesWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
 
   This can be used in your application as:
 
-      use PicMapWeb, :controller
-      use PicMapWeb, :html
+      use LiveViewNativeGuidesWeb, :controller
+      use LiveViewNativeGuidesWeb, :html
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
@@ -40,10 +40,10 @@ defmodule PicMapWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: PicMapWeb.Layouts]
+        layouts: [html: LiveViewNativeGuidesWeb.Layouts]
 
       import Plug.Conn
-      import PicMapWeb.Gettext
+      import LiveViewNativeGuidesWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -52,7 +52,7 @@ defmodule PicMapWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {PicMapWeb.Layouts, :app}
+        layout: {LiveViewNativeGuidesWeb.Layouts, :app}
 
       unquote(html_helpers())
     end
@@ -84,8 +84,8 @@ defmodule PicMapWeb do
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components and translation
-      import PicMapWeb.CoreComponents
-      import PicMapWeb.Gettext
+      import LiveViewNativeGuidesWeb.CoreComponents
+      import LiveViewNativeGuidesWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
@@ -98,9 +98,9 @@ defmodule PicMapWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: PicMapWeb.Endpoint,
-        router: PicMapWeb.Router,
-        statics: PicMapWeb.static_paths()
+        endpoint: LiveViewNativeGuidesWeb.Endpoint,
+        router: LiveViewNativeGuidesWeb.Router,
+        statics: LiveViewNativeGuidesWeb.static_paths()
     end
   end
 

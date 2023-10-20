@@ -8,18 +8,18 @@
 import Config
 
 config :pic_map,
-  ecto_repos: [PicMap.Repo],
+  ecto_repos: [LiveViewNativeGuides.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :pic_map, PicMapWeb.Endpoint,
+config :pic_map, LiveViewNativeGuidesWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Phoenix.Endpoint.Cowboy2Adapter,
   render_errors: [
-    formats: [html: PicMapWeb.ErrorHTML, json: PicMapWeb.ErrorJSON],
+    formats: [html: LiveViewNativeGuidesWeb.ErrorHTML, json: LiveViewNativeGuidesWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: PicMap.PubSub,
+  pubsub_server: LiveViewNativeGuides.PubSub,
   live_view: [signing_salt: "KKkCHmXo"],
   # Reloadable Apps
   reloadable_apps: [:pic_map],
@@ -32,7 +32,7 @@ config :pic_map, PicMapWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :pic_map, PicMap.Mailer, adapter: Swoosh.Adapters.Local
+config :pic_map, LiveViewNativeGuides.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,

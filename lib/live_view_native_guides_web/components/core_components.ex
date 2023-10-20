@@ -1,4 +1,4 @@
-defmodule PicMapWeb.CoreComponents do
+defmodule LiveViewNativeGuidesWeb.CoreComponents do
   @moduledoc """
   Provides core UI components.
 
@@ -17,7 +17,7 @@ defmodule PicMapWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import PicMapWeb.Gettext
+  import LiveViewNativeGuidesWeb.Gettext
 
   @doc """
   Renders a modal.
@@ -659,9 +659,9 @@ defmodule PicMapWeb.CoreComponents do
     # with our gettext backend as first argument. Translations are
     # available in the errors.po file (as we use the "errors" domain).
     if count = opts[:count] do
-      Gettext.dngettext(PicMapWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(LiveViewNativeGuidesWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(PicMapWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(LiveViewNativeGuidesWeb.Gettext, "errors", msg, opts)
     end
   end
 

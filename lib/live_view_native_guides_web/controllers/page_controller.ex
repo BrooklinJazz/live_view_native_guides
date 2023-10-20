@@ -1,5 +1,5 @@
-defmodule PicMapWeb.PageController do
-  use PicMapWeb, :controller
+defmodule LiveViewNativeGuidesWeb.PageController do
+  use LiveViewNativeGuidesWeb, :controller
 
   def home(conn, _params) do
     # The home page is often custom made,

@@ -1,4 +1,4 @@
-defmodule PicMapWeb.Telemetry do
+defmodule LiveViewNativeGuidesWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -86,7 +86,7 @@ defmodule PicMapWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {PicMapWeb, :count_users, []}
+      # {LiveViewNativeGuidesWeb, :count_users, []}
     ]
   end
 end

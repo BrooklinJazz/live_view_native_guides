@@ -1,4 +1,4 @@
-defmodule PicMapWeb.Endpoint do
+defmodule LiveViewNativeGuidesWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :pic_map
 
   # The session will be stored in the cookie and signed,
@@ -21,7 +21,7 @@ defmodule PicMapWeb.Endpoint do
     at: "/",
     from: :pic_map,
     gzip: false,
-    only: PicMapWeb.static_paths()
+    only: LiveViewNativeGuidesWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -47,5 +47,5 @@ defmodule PicMapWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug PicMapWeb.Router
+  plug LiveViewNativeGuidesWeb.Router
 end

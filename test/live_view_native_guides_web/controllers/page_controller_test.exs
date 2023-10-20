@@ -1,5 +1,5 @@
-defmodule PicMapWeb.PageControllerTest do
-  use PicMapWeb.ConnCase
+defmodule LiveViewNativeGuidesWeb.PageControllerTest do
+  use LiveViewNativeGuidesWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")

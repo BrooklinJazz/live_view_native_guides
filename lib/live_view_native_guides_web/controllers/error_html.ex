@@ -1,5 +1,5 @@
-defmodule PicMapWeb.ErrorHTML do
-  use PicMapWeb, :html
+defmodule LiveViewNativeGuidesWeb.ErrorHTML do
+  use LiveViewNativeGuidesWeb, :html
 
   # If you want to customize your error pages,
   # uncomment the embed_templates/1 call below

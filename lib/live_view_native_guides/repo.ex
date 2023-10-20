@@ -1,4 +1,4 @@
-defmodule PicMap.Repo do
+defmodule LiveViewNativeGuides.Repo do
   use Ecto.Repo,
     otp_app: :pic_map,
     adapter: Ecto.Adapters.Postgres

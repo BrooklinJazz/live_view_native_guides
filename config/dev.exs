@@ -1,7 +1,7 @@
 import Config
 
 # Configure your database
-config :pic_map, PicMap.Repo,
+config :pic_map, LiveViewNativeGuides.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
@@ -16,7 +16,7 @@ config :pic_map, PicMap.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :pic_map, PicMapWeb.Endpoint,
+config :pic_map, LiveViewNativeGuidesWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
@@ -53,7 +53,7 @@ config :pic_map, PicMapWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :pic_map, PicMapWeb.Endpoint,
+config :pic_map, LiveViewNativeGuidesWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
@@ -84,5 +84,6 @@ config :swoosh, :api_client, false
 # KinoLiveView
 config :kino_live_view,
   enabled: true,
-  pubsub_server: MyApp.PubSub,
+  pubsub_server: LiveViewNativeGuides.PubSub,
+  router_module: LiveViewNativeGuidesWeb.Router,
   socket: KinoLiveView.LiveReloader.Socket

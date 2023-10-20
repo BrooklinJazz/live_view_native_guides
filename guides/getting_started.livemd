@@ -1,3 +1,5 @@
+<!-- livebook:{"file_entries":[{"name":"hello_world_ios_app.png","type":"attachment"},{"name":"live_view_native_guides_xcode_open_existing_projec.png","type":"attachment"},{"name":"live_view_native_guides_xcode_open_existing_project.png","type":"attachment"},{"name":"logo.png","type":"attachment"},{"name":"xcode_live_view_guides_open_project.png","type":"attachment"}]} -->
+
 # Getting Started
 
 ## Setup
@@ -8,7 +10,7 @@ Before you setup **LiveView Native Guides** you'll need to install the following
 * [Phoenix](https://hexdocs.pm/phoenix/installation.html)
 * [PostgreSQL](https://www.postgresql.org/download/)
 * [Livebook](https://livebook.dev/)
-* [XCode](https://developer.apple.com/xcode/)
+* [Xcode](https://developer.apple.com/xcode/)
 
 <!-- livebook:{"break_markdown":true} -->
 
@@ -40,7 +42,7 @@ $ iex --sname test --cookie mycookie -S mix phx.server
 
 ### Attached Node Runtime
 
-**LiveView Native Guides** work best when you run the included Phoenix project as an attached node to the Livebook session.
+**LiveView Native Guides** work best when you run the the Livebook runtime as an attached node to the included Phoenix project.
 
 See this short video for instructions on how to start the Livebook runtime as an attached node: https://www.youtube.com/watch?v=vPrFBjgAMyM&t=2s&ab_channel=Livebook
 
@@ -50,7 +52,7 @@ Alternatively, to make this process easier, we've included a `.env` file in the 
 export LIVEBOOK_DEFAULT_RUNTIME="attached:test:mycookie"
 ```
 
-Ensure the included Phoenix server is always running with the same `sname` and `cookie` as Livebook when using these guides. We've used `test` and `mycookie` by default.
+Ensure the included Phoenix server is always running with the same `sname` and `cookie` as Livebook when using these guides. We've used `test` and `mycookie` by default to minimize any friction but you can use your own values.
 
 <!-- livebook:{"break_markdown":true} -->
 
@@ -58,7 +60,7 @@ Ensure the included Phoenix server is always running with the same `sname` and `
 
 Evaluate the following example smart cell and visit http://localhost:4000 to ensure both Livebook and your Phoenix server are connected properly.
 
-<!-- livebook:{"attrs":{"action":":index","code":"defmodule MyAppWeb.HelloLive do\n  use Phoenix.LiveView\n  use LiveViewNative.LiveView\n\n  @impl true\n  def render(%{platform_id: :swiftui} = assigns) do\n    # This UI renders on the iPhone / iPad app\n    ~SWIFTUI\"\"\"\n    <VStack>\n      <Text>\n        Hello native!\n      </Text>\n    </VStack>\n    \"\"\"\n  end\n\n  @impl true\n  def render(%{} = assigns) do\n    # This UI renders on the web\n    ~H\"\"\"\n    <div class=\"flex w-full h-screen items-center\">\n      <span class=\"w-full text-center\">\n        Hello web!\n      </span>\n    </div>\n    \"\"\"\n  end\nend","path":"/"},"chunks":null,"kind":"Elixir.KinoLiveView.SmartCell","livebook_object":"smart_cell"} -->
+<!-- livebook:{"attrs":{"action":":index","code":"defmodule MyAppWeb.HelloLive do\n  use Phoenix.LiveView\n  use LiveViewNative.LiveView\n\n  @impl true\n  def render(%{platform_id: :swiftui} = assigns) do\n    # This UI renders on the iPhone / iPad app\n    ~SWIFTUI\"\"\"\n    <VStack>\n      <Text>\n        Hello native!\n      </Text>\n    </VStack>\n    \"\"\"\n  end\n\n  @impl true\n  def render(%{} = assigns) do\n    # This UI renders on the web\n    ~H\"\"\"\n    <div class=\"flex w-full h-screen items-center bg-red-500\">\n      <span class=\"w-full text-center\">\n        Hello web!\n      </span>\n    </div>\n    \"\"\"\n  end\nend","path":"/"},"chunks":null,"kind":"Elixir.KinoLiveView.SmartCell","livebook_object":"smart_cell"} -->
 
 ```elixir
 import Kernel, except: [defmodule: 2]
@@ -84,7 +86,7 @@ defmodule MyAppWeb.HelloLive do
   def render(%{} = assigns) do
     # This UI renders on the web
     ~H"""
-    <div class="flex w-full h-screen items-center">
+    <div class="flex w-full h-screen items-center bg-red-500">
       <span class="w-full text-center">
         Hello web!
       </span>
@@ -101,7 +103,76 @@ import Kernel
 
 ### Hello Native
 
+Start Xcode and open the existing `LiveViewNativeGuides` project included in the `native/swiftui` folder of this project.
+
 <!-- livebook:{"break_markdown":true} -->
+
+![](files/live_view_native_guides_xcode_open_existing_project.png)
+
+<!-- livebook:{"break_markdown":true} -->
+
+Press the start button (<i class="ri-play-fill"></i>) on Xcode once the project has finished indexing to start the **LiveView Native Guides** SwiftUI project on the Xcode simulator.
+
+<!-- livebook:{"break_markdown":true} -->
+
+![](files/xcode_live_view_guides_open_project.png)
+
+<!-- livebook:{"break_markdown":true} -->
+
+The SwiftUI application should open on your device.
+
+<!-- livebook:{"break_markdown":true} -->
+
+<img height="100%" width="50%" src="files/hello_world_ios_app.png" />
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Live Reloading
+
+Now you can make changes to LiveViews by re-evaluating a smart cell, or evaluating a new cell that replaces the existing LiveView.
+
+For example, evaluate the smart cell below and notice that both the web and native applications live update.
+
+<!-- livebook:{"attrs":{"action":":index","code":"defmodule LiveViewNativeGuidesWeb.HelloLive do\n  use Phoenix.LiveView\n  use LiveViewNative.LiveView\n\n  @impl true\n  def render(%{platform_id: :swiftui} = assigns) do\n    # This UI renders on the iPhone / iPad app\n    ~SWIFTUI\"\"\"\n    <VStack>\n      <Text>\n        Hello updated native!\n      </Text>\n    </VStack>\n    \"\"\"\n  end\n\n  @impl true\n  def render(%{} = assigns) do\n    # This UI renders on the web\n    ~H\"\"\"\n    <div class=\"flex w-full h-screen items-center bg-red-200\">\n      <span class=\"w-full text-center\">\n        Hello updated web!\n      </span>\n    </div>\n    \"\"\"\n  end\nend","path":"/"},"chunks":null,"kind":"Elixir.KinoLiveView.SmartCell","livebook_object":"smart_cell"} -->
+
+```elixir
+import Kernel, except: [defmodule: 2]
+import KinoLiveView.SmartCell, only: [defmodule: 2, register: 2]
+
+defmodule LiveViewNativeGuidesWeb.HelloLive do
+  use Phoenix.LiveView
+  use LiveViewNative.LiveView
+
+  @impl true
+  def render(%{platform_id: :swiftui} = assigns) do
+    # This UI renders on the iPhone / iPad app
+    ~SWIFTUI"""
+    <VStack>
+      <Text>
+        Hello updated native!
+      </Text>
+    </VStack>
+    """
+  end
+
+  @impl true
+  def render(%{} = assigns) do
+    # This UI renders on the web
+    ~H"""
+    <div class="flex w-full h-screen items-center bg-red-200">
+      <span class="w-full text-center">
+        Hello updated web!
+      </span>
+    </div>
+    """
+  end
+end
+|> register("/")
+
+import KinoLiveView.SmartCell, only: []
+import Kernel
+:ok
+```
 
 ### Troubleshooting
 

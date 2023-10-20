@@ -1,4 +1,4 @@
-defmodule PicMap.MixProject do
+defmodule LiveViewNativeGuides.MixProject do
   use Mix.Project
 
   @version "0.0.1"
@@ -23,7 +23,7 @@ defmodule PicMap.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {PicMap.Application, []},
+      mod: {LiveViewNativeGuides.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -69,8 +69,8 @@ defmodule PicMap.MixProject do
       source_ref: "v#{@version}",
       main: "overview",
       source_url: @source_url,
-      logo: "guides/assets/images/logo.png",
-      assets: "guides/assets",
+      logo: "guides/files/logo.png",
+      assets: "guides/files",
       extra_section: "GUIDES",
       extras: [
         "guides/overview.md",

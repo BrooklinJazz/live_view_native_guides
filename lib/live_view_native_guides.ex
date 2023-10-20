@@ -1,6 +1,6 @@
-defmodule PicMap do
+defmodule LiveViewNativeGuides do
   @moduledoc """
-  PicMap keeps the contexts that define your domain
+  LiveViewNativeGuides keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

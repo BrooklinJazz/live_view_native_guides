@@ -1,11 +1,11 @@
-defmodule PicMapWeb.Router do
-  use PicMapWeb, :router
+defmodule LiveViewNativeGuidesWeb.Router do
+  use LiveViewNativeGuidesWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, html: {PicMapWeb.Layouts, :root}
+    plug :put_root_layout, html: {LiveViewNativeGuidesWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -27,7 +27,7 @@ defmodule PicMapWeb.Router do
 
 
   # Other scopes may use custom stacks.
-  # scope "/api", PicMapWeb do
+  # scope "/api", LiveViewNativeGuidesWeb do
   #   pipe_through :api
   # end
 
@@ -43,7 +43,7 @@ defmodule PicMapWeb.Router do
     scope "/dev" do
       pipe_through :browser
 
-      live_dashboard "/dashboard", metrics: PicMapWeb.Telemetry
+      live_dashboard "/dashboard", metrics: LiveViewNativeGuidesWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
