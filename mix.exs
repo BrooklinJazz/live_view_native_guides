@@ -73,8 +73,9 @@ defmodule PicMap.MixProject do
       extra_section: "GUIDES",
       extras: [
         "guides/overview.md",
-        "guides/getting_started.livemd",
+        "guides/getting_started.livemd"
       ],
+      before_closing_head_tag: &before_closing_head_tag/1
     ]
   end
 
@@ -91,7 +92,39 @@ defmodule PicMap.MixProject do
     ]
   end
 
-    # Hex package configuration
+  defp before_closing_head_tag(:html) do
+    """
+    <!-- HTML injected at the end of the <head> element -->
+
+    <!-- Mermaid Diagram Support -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.2.3/dist/mermaid.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: document.body.className.includes("dark") ? "dark" : "default"
+        });
+        let id = 0;
+        for (const codeEl of document.querySelectorAll("pre code.mermaid")) {
+          const preEl = codeEl.parentElement;
+          const graphDefinition = codeEl.textContent;
+          const graphEl = document.createElement("div");
+          const graphId = "mermaid-graph-" + id++;
+          mermaid.render(graphId, graphDefinition).then(({svg, bindFunctions}) => {
+            graphEl.innerHTML = svg;
+            bindFunctions?.(graphEl);
+            preEl.insertAdjacentElement("afterend", graphEl);
+            preEl.remove();
+          });
+        }
+      });
+    </script>
+    """
+  end
+
+  defp before_closing_head_tag(:epub), do: ""
+
+  # Hex package configuration
   defp package do
     %{
       maintainers: ["Brooklin Myers"],

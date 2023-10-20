@@ -1,16 +1,20 @@
 # Getting Started
 
-## Setu
+## Setup
 
 To get started with **LiveView Native Guides**
 
-<!-- livebook:{"attrs":{"action":":index","code":"defmodule PicMapWeb.InjectedLive do\n  use Phoenix.LiveView\n  use LiveViewNative.LiveView\n\n  @impl true\n  def render(%{platform_id: :swiftui} = assigns) do\n    # This UI renders on the iPhone / iPad app\n    ~SWIFTUI\"\"\"\n    <VStack>\n      <Text>\n        Hello Native\n      </Text>\n    </VStack>\n    \"\"\"\n  end\n\n  @impl true\n  def render(%{} = assigns) do\n    # This UI renders on the web\n    ~H\"\"\"\n    <div class=\"flex w-full h-screen items-center\">\n      <span class=\"w-full text-center\">\n        Hello Web\n      </span>\n    </div>\n    \"\"\"\n  end\nend","path":"/"},"chunks":null,"kind":"Elixir.KinoNative.SmartCell","livebook_object":"smart_cell"} -->
+<!-- livebook:{"break_markdown":true} -->
+
+
+
+<!-- livebook:{"attrs":{"action":":index","code":"defmodule MyApp.HelloWorldLive do\n  use Phoenix.LiveView\n  use LiveViewNative.LiveView\n\n  @impl true\n  def render(%{platform_id: :swiftui} = assigns) do\n    # This UI renders on the iPhone / iPad app\n    ~SWIFTUI\"\"\"\n    <VStack>\n      <Text>\n        Hello Native\n      </Text>\n    </VStack>\n    \"\"\"\n  end\n\n  @impl true\n  def render(%{} = assigns) do\n    # This UI renders on the web\n    ~H\"\"\"\n    <div class=\"flex w-full h-screen items-center\">\n      <span class=\"w-full text-center\">\n        Hello Web\n      </span>\n    </div>\n    \"\"\"\n  end\nend","path":"/"},"chunks":null,"kind":"Elixir.KinoNative.SmartCell","livebook_object":"smart_cell"} -->
 
 ```elixir
 import Kernel, except: [defmodule: 2]
 import KinoNative.SmartCell, only: [defmodule: 2, register: 2]
 
-defmodule PicMapWeb.InjectedLive do
+defmodule MyApp.HelloWorldLive do
   use Phoenix.LiveView
   use LiveViewNative.LiveView
 

@@ -19,7 +19,6 @@ defmodule KinoNative.SmartCell do
      ]}
   end
 
-
   @impl true
   def handle_connect(ctx) do
     {:ok, %{path: ctx.assigns.path, action: ctx.assigns.action}, ctx}
