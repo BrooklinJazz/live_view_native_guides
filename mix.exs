@@ -79,19 +79,6 @@ defmodule PicMap.MixProject do
     ]
   end
 
-  defp extras do
-    [
-      "guides/introduction/overview.md",
-      "guides/introduction/installation.md",
-      "guides/introduction/your-first-native-liveview.md",
-      "guides/introduction/troubleshooting.md",
-      "guides/common-features/template-syntax.md",
-      "guides/common-features/modifiers.md",
-      "guides/common-features/render-patterns.md",
-      "guides/common-features/handling-events.md"
-    ]
-  end
-
   defp before_closing_head_tag(:html) do
     """
     <!-- HTML injected at the end of the <head> element -->
