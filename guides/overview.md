@@ -25,16 +25,18 @@ L --> P --> S
 
 Below, we'll go over an overview of the implementation of this project and how it all works. However, you do not need to know these details to begin the [Getting Started](getting_started.livemd) guide and start learning LiveView Native. 
 
-### KinoNative.SmartCell
+### KinoLiveView
 
-Notebooks have examples using a `KinoNative.SmartCell` [SmartCell](https://hexdocs.pm/kino/Kino.SmartCell.html), which define LiveViews. Upon evaluating a smart cell, the Phoenix application's router file automatically updates to include the new LiveView and associated route.
+Notebooks have examples using a [KinoLiveView](https://github.com/BrooklinJazz/kino_live_view) [SmartCell](https://hexdocs.pm/kino/Kino.SmartCell.html), which dynamically inject LiveViews into a Phoenix application. 
+
+Upon evaluating a smart cell, the Phoenix application's router file automatically updates to include the new LiveView and associated route. Here's the code you'll find in `router.ex` that dynamically includes these LiveViews.
 
 ```elixir
 # router.ex
 scope "/" do
     pipe_through :browser
 
-    KinoNative.SmartCell.get_routes()
+    KinoLiveView.get_routes()
     |> Enum.map(fn %{path: path, module: module, action: action} ->
         live(path, module, action)
     end)

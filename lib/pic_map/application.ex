@@ -20,7 +20,9 @@ defmodule PicMap.Application do
       PicMapWeb.Endpoint
     ]
 
-    Kino.SmartCell.register(KinoNative.SmartCell)
+    if Application.get_env(:kino_live_view, :enabled) do
+      Kino.SmartCell.register(KinoLiveView.SmartCell)
+    end
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

@@ -80,3 +80,9 @@ config :phoenix_live_view, :debug_heex_annotations, true
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+# KinoLiveView
+config :kino_live_view,
+  enabled: true,
+  pubsub_server: MyApp.PubSub,
+  socket: KinoLiveView.LiveReloader.Socket

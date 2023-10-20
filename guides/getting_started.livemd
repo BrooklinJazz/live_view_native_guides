@@ -2,19 +2,69 @@
 
 ## Setup
 
-To get started with **LiveView Native Guides**
+Before you setup **LiveView Native Guides** you'll need to install the following prerequisites:
+
+* [Elixir](https://elixir-lang.org/install.html)
+* [Phoenix](https://hexdocs.pm/phoenix/installation.html)
+* [PostgreSQL](https://www.postgresql.org/download/)
+* [Livebook](https://livebook.dev/)
+* [XCode](https://developer.apple.com/xcode/)
 
 <!-- livebook:{"break_markdown":true} -->
 
+### Clone the Project
 
+HTTPS
 
-<!-- livebook:{"attrs":{"action":":index","code":"defmodule MyApp.HelloWorldLive do\n  use Phoenix.LiveView\n  use LiveViewNative.LiveView\n\n  @impl true\n  def render(%{platform_id: :swiftui} = assigns) do\n    # This UI renders on the iPhone / iPad app\n    ~SWIFTUI\"\"\"\n    <VStack>\n      <Text>\n        Hello Native\n      </Text>\n    </VStack>\n    \"\"\"\n  end\n\n  @impl true\n  def render(%{} = assigns) do\n    # This UI renders on the web\n    ~H\"\"\"\n    <div class=\"flex w-full h-screen items-center\">\n      <span class=\"w-full text-center\">\n        Hello Web\n      </span>\n    </div>\n    \"\"\"\n  end\nend","path":"/"},"chunks":null,"kind":"Elixir.KinoNative.SmartCell","livebook_object":"smart_cell"} -->
+```sh
+$ git clone https://github.com/BrooklinJazz/liveview_native_guides.git
+```
+
+SSH
+
+```sh
+git clone git@github.com:BrooklinJazz/liveview_native_guides.git
+```
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Start the Phoenix Server
+
+Navigate to the `live_view_guides` folder and start the Phoenix server. Make sure to set the `sname` and `cookie` flags as we'll use these later when we start the Livebook runtime as an attached node to the Phoenix server.
+
+```
+$ iex --sname test --cookie mycookie -S mix phx.server
+```
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Attached Node Runtime
+
+**LiveView Native Guides** work best when you run the included Phoenix project as an attached node to the Livebook session.
+
+See this short video for instructions on how to start the Livebook runtime as an attached node: https://www.youtube.com/watch?v=vPrFBjgAMyM&t=2s&ab_channel=Livebook
+
+Alternatively, to make this process easier, we've included a `.env` file in the project that you can use to set the default runtime.
+
+```shell
+export LIVEBOOK_DEFAULT_RUNTIME="attached:test:mycookie"
+```
+
+Ensure the included Phoenix server is always running with the same `sname` and `cookie` as Livebook when using these guides. We've used `test` and `mycookie` by default.
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Hello Web
+
+Evaluate the following example smart cell and visit http://localhost:4000 to ensure both Livebook and your Phoenix server are connected properly.
+
+<!-- livebook:{"attrs":{"action":":index","code":"defmodule MyAppWeb.HelloLive do\n  use Phoenix.LiveView\n  use LiveViewNative.LiveView\n\n  @impl true\n  def render(%{platform_id: :swiftui} = assigns) do\n    # This UI renders on the iPhone / iPad app\n    ~SWIFTUI\"\"\"\n    <VStack>\n      <Text>\n        Hello native!\n      </Text>\n    </VStack>\n    \"\"\"\n  end\n\n  @impl true\n  def render(%{} = assigns) do\n    # This UI renders on the web\n    ~H\"\"\"\n    <div class=\"flex w-full h-screen items-center\">\n      <span class=\"w-full text-center\">\n        Hello web!\n      </span>\n    </div>\n    \"\"\"\n  end\nend","path":"/"},"chunks":null,"kind":"Elixir.KinoLiveView.SmartCell","livebook_object":"smart_cell"} -->
 
 ```elixir
 import Kernel, except: [defmodule: 2]
-import KinoNative.SmartCell, only: [defmodule: 2, register: 2]
+import KinoLiveView.SmartCell, only: [defmodule: 2, register: 2]
 
-defmodule MyApp.HelloWorldLive do
+defmodule MyAppWeb.HelloLive do
   use Phoenix.LiveView
   use LiveViewNative.LiveView
 
@@ -24,7 +74,7 @@ defmodule MyApp.HelloWorldLive do
     ~SWIFTUI"""
     <VStack>
       <Text>
-        Hello Native
+        Hello native!
       </Text>
     </VStack>
     """
@@ -36,7 +86,7 @@ defmodule MyApp.HelloWorldLive do
     ~H"""
     <div class="flex w-full h-screen items-center">
       <span class="w-full text-center">
-        Hello Web
+        Hello web!
       </span>
     </div>
     """
@@ -44,7 +94,17 @@ defmodule MyApp.HelloWorldLive do
 end
 |> register("/")
 
-import KinoNative.SmartCell, only: []
+import KinoLiveView.SmartCell, only: []
 import Kernel
 :ok
 ```
+
+### Hello Native
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Troubleshooting
+
+You can [raise an Issue](https://github.com/BrooklinJazz/liveview_native_guides/issues/new) if you have any trouble setting up the project or encounter any issues.
+
+You can also contact Brooklin Myers at brooklin.myers@dockyard.com or DM on twitter [@BrooklinJMyers](https://twitter.com/BrooklinJMyers) for support.

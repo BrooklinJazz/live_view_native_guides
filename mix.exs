@@ -59,7 +59,8 @@ defmodule PicMap.MixProject do
       {:live_view_native, "~> 0.1"},
       {:live_view_native_swift_ui, "~> 0.1"},
       {:kino, "~> 0.10.0"},
-      {:ex_doc, "~> 0.30.8"}
+      {:ex_doc, "~> 0.30.9"},
+      {:kino_live_view, path: "../kino_live_view", only: :dev}
     ]
   end
 
