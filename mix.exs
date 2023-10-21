@@ -2,11 +2,11 @@ defmodule LiveViewNativeGuides.MixProject do
   use Mix.Project
 
   @version "0.0.1"
-  @source_url "https://github.com/brooklin_jazz/pic_map"
+  @source_url "https://github.com/brooklin_jazz/live_view_native_guides"
 
   def project do
     [
-      app: :pic_map,
+      app: :live_view_native_guides,
       version: @version,
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -60,7 +60,7 @@ defmodule LiveViewNativeGuides.MixProject do
       {:live_view_native_swift_ui, "~> 0.1"},
       {:kino, "~> 0.10.0"},
       {:ex_doc, "~> 0.30.9"},
-      {:kino_live_view, path: "../kino_live_view", only: :dev}
+      {:kino_live_view,  "~> 0.1.0"}
     ]
   end
 

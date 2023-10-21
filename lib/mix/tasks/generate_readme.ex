@@ -2,7 +2,7 @@ defmodule Mix.Tasks.GenerateReadme do
   use Mix.Task
 
   @readme_path "README.md"
-  @course_outline_path "./guides/pic_map/index.livemd"
+  @course_outline_path "./guides/live_view_native_guides/index.livemd"
   @ignored_sections ["## Prerequisites"]
 
   def run(_args) do

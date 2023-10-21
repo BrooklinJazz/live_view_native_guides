@@ -52,23 +52,23 @@ defmodule LiveViewNativeGuidesWeb.Telemetry do
       ),
 
       # Database Metrics
-      summary("pic_map.repo.query.total_time",
+      summary("live_view_native_guides.repo.query.total_time",
         unit: {:native, :millisecond},
         description: "The sum of the other measurements"
       ),
-      summary("pic_map.repo.query.decode_time",
+      summary("live_view_native_guides.repo.query.decode_time",
         unit: {:native, :millisecond},
         description: "The time spent decoding the data received from the database"
       ),
-      summary("pic_map.repo.query.query_time",
+      summary("live_view_native_guides.repo.query.query_time",
         unit: {:native, :millisecond},
         description: "The time spent executing the query"
       ),
-      summary("pic_map.repo.query.queue_time",
+      summary("live_view_native_guides.repo.query.queue_time",
         unit: {:native, :millisecond},
         description: "The time spent waiting for a database connection"
       ),
-      summary("pic_map.repo.query.idle_time",
+      summary("live_view_native_guides.repo.query.idle_time",
         unit: {:native, :millisecond},
         description:
           "The time the connection spent waiting before being checked out for the query"

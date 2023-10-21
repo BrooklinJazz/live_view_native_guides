@@ -20,5 +20,5 @@ defmodule LiveViewNativeGuidesWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :pic_map
+  use Gettext, otp_app: :live_view_native_guides
 end

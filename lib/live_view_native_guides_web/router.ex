@@ -14,6 +14,13 @@ defmodule LiveViewNativeGuidesWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/" do
+    pipe_through :browser
+
+    # The Placeholder LiveView is used to render a placeholder UI and will be overwritten by Livebook
+    live "/", LiveViewNativeGuidesWeb.PlaceholderLive
+  end
+
   if Application.compile_env(:kino_live_view, :enabled) do
     scope "/" do
       pipe_through :browser
@@ -32,7 +39,7 @@ defmodule LiveViewNativeGuidesWeb.Router do
   # end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
-  if Application.compile_env(:pic_map, :dev_routes) do
+  if Application.compile_env(:live_view_native_guides, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put
     # it behind authentication and allow only admins to access it.
     # If your application does not have an admins-only section yet,

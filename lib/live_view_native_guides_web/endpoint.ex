@@ -1,12 +1,12 @@
 defmodule LiveViewNativeGuidesWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :pic_map
+  use Phoenix.Endpoint, otp_app: :live_view_native_guides
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_pic_map_key",
+    key: "_live_view_native_guides_key",
     signing_salt: "Px6Y6COo",
     same_site: "Lax"
   ]
@@ -19,7 +19,7 @@ defmodule LiveViewNativeGuidesWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :pic_map,
+    from: :live_view_native_guides,
     gzip: false,
     only: LiveViewNativeGuidesWeb.static_paths()
 
@@ -29,7 +29,7 @@ defmodule LiveViewNativeGuidesWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Application.get_env(:kino_live_view, :socket, Phoenix.LiveReloader.Socket)
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :pic_map
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :live_view_native_guides
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,

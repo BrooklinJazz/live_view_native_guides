@@ -7,12 +7,12 @@
 # General application configuration
 import Config
 
-config :pic_map,
+config :live_view_native_guides,
   ecto_repos: [LiveViewNativeGuides.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :pic_map, LiveViewNativeGuidesWeb.Endpoint,
+config :live_view_native_guides, LiveViewNativeGuidesWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Phoenix.Endpoint.Cowboy2Adapter,
   render_errors: [
@@ -22,7 +22,7 @@ config :pic_map, LiveViewNativeGuidesWeb.Endpoint,
   pubsub_server: LiveViewNativeGuides.PubSub,
   live_view: [signing_salt: "KKkCHmXo"],
   # Reloadable Apps
-  reloadable_apps: [:pic_map],
+  reloadable_apps: [:live_view_native_guides],
   reloadable_compilers: [:gettext, :elixir]
 
 # Configures the mailer
@@ -32,7 +32,7 @@ config :pic_map, LiveViewNativeGuidesWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :pic_map, LiveViewNativeGuides.Mailer, adapter: Swoosh.Adapters.Local
+config :live_view_native_guides, LiveViewNativeGuides.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,

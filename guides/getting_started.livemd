@@ -30,9 +30,27 @@ git clone git@github.com:BrooklinJazz/liveview_native_guides.git
 
 <!-- livebook:{"break_markdown":true} -->
 
+###
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Create the PostgreSQL Database
+
+Run the following from the project `live_view_native_guides` folder to create the Database.
+
+```
+$ mix ecto.create
+```
+
+If this command fails, ensure you have Postgres installed.
+
+By default, the project assumes you have a superuser named `postgres` with the password `postgres`. You can manage this configuration in `dev.exs` if you prefer to change these credentials.
+
+<!-- livebook:{"break_markdown":true} -->
+
 ### Start the Phoenix Server
 
-Navigate to the `live_view_guides` folder and start the Phoenix server. Make sure to set the `sname` and `cookie` flags as we'll use these later when we start the Livebook runtime as an attached node to the Phoenix server.
+Navigate to the `live_view_native_guides` folder and start the Phoenix server. Make sure to set the `sname` and `cookie` flags as we'll use these later when we start the Livebook runtime as an attached node to the Phoenix server.
 
 ```
 $ iex --sname test --cookie mycookie -S mix phx.server

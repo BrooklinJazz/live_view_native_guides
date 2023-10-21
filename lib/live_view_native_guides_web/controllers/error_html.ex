@@ -5,8 +5,8 @@ defmodule LiveViewNativeGuidesWeb.ErrorHTML do
   # uncomment the embed_templates/1 call below
   # and add pages to the error directory:
   #
-  #   * lib/pic_map_web/controllers/error_html/404.html.heex
-  #   * lib/pic_map_web/controllers/error_html/500.html.heex
+  #   * lib/live_view_native_guides_web/controllers/error_html/404.html.heex
+  #   * lib/live_view_native_guides_web/controllers/error_html/500.html.heex
   #
   # embed_templates "error_html/*"
 
