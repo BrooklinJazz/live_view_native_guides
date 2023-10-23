@@ -4,7 +4,7 @@
 
 * [Getting Started](getting_started.livemd)
 
-* [MapPic: Web](map_pic_web.livemd)
+* [MapPic: Web]()
 
 * [MapPic: IOS]()
 
