@@ -107,11 +107,6 @@ defmodule LiveViewNativeGuides.MixProject do
         }
       });
     </script>
-
-    <!-- Remove Smart Cell Boilerplate -->
-    <script>
-    console.log("MY DOC", document)
-    </script>
     """
   end
 
@@ -122,6 +117,7 @@ defmodule LiveViewNativeGuides.MixProject do
     %{
       maintainers: ["Brooklin Myers"],
       licenses: ["MIT"],
+      description: "A course on building native mobile apps with LiveView Native.",
       links: %{
         "GitHub" => @source_url
       },
@@ -143,7 +139,6 @@ defmodule LiveViewNativeGuides.MixProject do
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
       "assets.build": ["tailwind default", "esbuild default"],
-      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
-    ]
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"],
   end
 end

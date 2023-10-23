@@ -45,7 +45,7 @@ end
 
 Here's an example HelloWorld LiveView in a `KinoNative.SmartCell` you could find in one of our notebooks.
 
-![Hello World LiveView Example](assets/images/hello_world_live.png)
+![Hello World LiveView Example](assets/hello_world_live.png)
 
 The native and web applications will automatically reload as if you had defined a new LiveView in the Phoenix application.
 
@@ -54,12 +54,12 @@ The native and web applications will automatically reload as if you had defined 
 ### IOS
 
 <div height="800" width="100%" style="display: flex; height: 800px; justify-content: center; align-items: center;">
-    <img height="100%" width="100%" style="object-fit: contain" src="assets/images/hello_world_ios_app.png"/>
+    <img height="100%" width="100%" style="object-fit: contain" src="assets/hello_world_ios_app.png"/>
 </div>
 ### Web
 
 <div height="800" width="100%" style="display: flex; height: 800px; justify-content: center; align-items: center;">
-    <img height="100%" width="100%" style="object-fit: contain" src="assets/images/hello_world_web_app.png" />
+    <img height="100%" width="100%" style="object-fit: contain" src="assets/hello_world_web_app.png" />
 </div>
 
 
