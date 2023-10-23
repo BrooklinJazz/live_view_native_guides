@@ -30,10 +30,6 @@ git clone git@github.com:BrooklinJazz/liveview_native_guides.git
 
 <!-- livebook:{"break_markdown":true} -->
 
-###
-
-<!-- livebook:{"break_markdown":true} -->
-
 ### Create the PostgreSQL Database
 
 Run the following from the project `live_view_native_guides` folder to create the Database.

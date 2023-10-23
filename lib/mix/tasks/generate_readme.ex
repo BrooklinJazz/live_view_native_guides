@@ -6,7 +6,6 @@ defmodule Mix.Tasks.GenerateReadme do
   @ignored_sections ["## Prerequisites"]
 
   def run(_args) do
-    IO.inspect(File.cwd!())
     IO.puts("Running: mix update_readme_outline")
 
     readme = File.read!(@readme_path)

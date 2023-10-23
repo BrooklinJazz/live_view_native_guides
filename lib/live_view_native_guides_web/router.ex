@@ -14,13 +14,6 @@ defmodule LiveViewNativeGuidesWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/" do
-    pipe_through :browser
-
-    # The Placeholder LiveView is used to render a placeholder UI and will be overwritten by Livebook
-    live "/", LiveViewNativeGuidesWeb.PlaceholderLive
-  end
-
   if Application.compile_env(:kino_live_view, :enabled) do
     scope "/" do
       pipe_through :browser
@@ -31,12 +24,6 @@ defmodule LiveViewNativeGuidesWeb.Router do
       end)
     end
   end
-
-
-  # Other scopes may use custom stacks.
-  # scope "/api", LiveViewNativeGuidesWeb do
-  #   pipe_through :api
-  # end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:live_view_native_guides, :dev_routes) do

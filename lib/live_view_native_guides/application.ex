@@ -10,7 +10,8 @@ defmodule LiveViewNativeGuides.Application do
     children = [
       LiveViewNativeGuidesWeb.Telemetry,
       LiveViewNativeGuides.Repo,
-      {DNSCluster, query: Application.get_env(:live_view_native_guides, :dns_cluster_query) || :ignore},
+      {DNSCluster,
+       query: Application.get_env(:live_view_native_guides, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: LiveViewNativeGuides.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: LiveViewNativeGuides.Finch},

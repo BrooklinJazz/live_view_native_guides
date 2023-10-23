@@ -60,7 +60,7 @@ defmodule LiveViewNativeGuides.MixProject do
       {:live_view_native_swift_ui, "~> 0.1"},
       {:kino, "~> 0.10.0"},
       {:ex_doc, "~> 0.30.9"},
-      {:kino_live_view,  "~> 0.1.0"}
+      {:kino_live_view, "~> 0.1.0"}
     ]
   end
 
@@ -106,6 +106,11 @@ defmodule LiveViewNativeGuides.MixProject do
           });
         }
       });
+    </script>
+
+    <!-- Remove Smart Cell Boilerplate -->
+    <script>
+    console.log("MY DOC", document)
     </script>
     """
   end
