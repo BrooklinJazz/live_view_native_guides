@@ -1,5 +1,6 @@
 defmodule LiveViewNativeGuides.MixProject do
   use Mix.Project
+  require Logger
 
   @version "0.0.1"
   @source_url "https://github.com/brooklin_jazz/live_view_native_guides"
@@ -60,7 +61,8 @@ defmodule LiveViewNativeGuides.MixProject do
       {:live_view_native_swift_ui, "~> 0.1"},
       {:kino, "~> 0.10.0"},
       {:ex_doc, "~> 0.30.9"},
-      {:kino_live_view, "~> 0.1.0"}
+      {:kino_live_view, "~> 0.1.0"},
+      {:livebook_utils, path: "../livebook_utils"}
     ]
   end
 
@@ -140,5 +142,13 @@ defmodule LiveViewNativeGuides.MixProject do
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
       "assets.build": ["tailwind default", "esbuild default"],
       "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"],
+      docs: ["docs", &copy_images/1]
+    ]
+  end
+
+  # hex docs uses "assets" folder where as livebook uses the "files" folder.
+  defp copy_images(_) do
+    Logger.info("Copying images to doc/files")
+    File.cp_r!("doc/assets", "doc/files")
   end
 end
