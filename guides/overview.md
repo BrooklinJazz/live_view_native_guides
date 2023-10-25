@@ -2,7 +2,9 @@
 
 **LiveView Native Guides** is an interactive tutorial for LiveView Native using Livebook.
 
-For the best experience, we recommend running these guides in Livebook so that you can see how the examples affect a native application.
+## Usage
+
+For the best experience, we recommend running these guides in Livebook so that you can see how the examples affect a native application. However, you can also read through these guides and try out examples inside of your own Phoenix project.
 
 See our [Getting Started](getting_started.livemd) guide to begin your LiveView Native learning journey!
 
