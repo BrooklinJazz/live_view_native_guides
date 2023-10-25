@@ -87,3 +87,8 @@ config :kino_live_view,
   pubsub_server: LiveViewNativeGuides.PubSub,
   router_module: LiveViewNativeGuidesWeb.Router,
   socket: KinoLiveView.LiveReloader.Socket
+
+# LivebookUtils
+config :livebook_utils,
+  index_path: "guides/index.livemd",
+  notebooks_path: "guides"

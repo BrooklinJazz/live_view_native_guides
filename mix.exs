@@ -62,7 +62,7 @@ defmodule LiveViewNativeGuides.MixProject do
       {:kino, "~> 0.10.0"},
       {:ex_doc, "~> 0.30.9"},
       {:kino_live_view, "~> 0.1.0"},
-      {:livebook_utils, path: "../livebook_utils"}
+      {:livebook_utils, "~> 0.1.0"}
     ]
   end
 
