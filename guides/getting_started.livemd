@@ -2,17 +2,9 @@
 
 # Getting Started
 
-<!-- navigation-start -->
-## Navigation
+## Overview
 
-<div style="display: flex; align-items: center; width: 100%; justify-content: space-between; font-size: 1rem; color: #61758a; background-color: #f0f5f9; height: 4rem; padding: 0 1rem; border-radius: 1rem;"><div style="display: flex; margin-left: auto;">
-<a style="display: flex; color: #61758a; margin-right: 1rem;" href="">MapPic: Web</a>
-<i class="ri-arrow-right-fill"></i>
-</div></div>
-<!-- navigation-end -->
-
-
-
+In this guide, you'll learn how to setup **LiveView Native Guides** and build a simple hello world application that runs on both the web and iOS.
 
 ## Setup
 
@@ -206,13 +198,17 @@ You can [raise an Issue](https://github.com/BrooklinJazz/liveview_native_guides/
 
 You can also contact Brooklin Myers at brooklin.myers@dockyard.com or DM on twitter [@BrooklinJMyers](https://twitter.com/BrooklinJMyers) for support.
 
+## Up Next
+
 <!-- navigation-start -->
-## Navigation
 
-<div style="display: flex; align-items: center; width: 100%; justify-content: space-between; font-size: 1rem; color: #61758a; background-color: #f0f5f9; height: 4rem; padding: 0 1rem; border-radius: 1rem;"><div style="display: flex; margin-left: auto;">
-<a style="display: flex; color: #61758a; margin-right: 1rem;" href="">MapPic: Web</a>
+<div style="display: flex; align-items: center; width: 100%; justify-content: space-between; font-size: 1rem; color: #61758a; background-color: #f0f5f9; height: 4rem; padding: 0 1rem; border-radius: 1rem;">
+
+<div style="display: flex; margin-left: auto;">
+<a style="display: flex; color: #61758a; margin-right: 1rem;" href="counter.livemd">Counter Application</a>
 <i class="ri-arrow-right-fill"></i>
-</div></div>
+</div>
+
+</div>
+
 <!-- navigation-end -->
-
-

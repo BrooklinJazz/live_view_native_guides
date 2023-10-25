@@ -1,16 +1,9 @@
 # LiveView Native Guides
 
-## Prerequisites
+## Basics
 
 * [Getting Started](getting_started.livemd)
-
-* [MapPic: Web]()
-
-* [MapPic: IOS]()
-
-* [MapPic: Apple Watch]()
-
-* [MapPic: Apple TV]()
+* [Counter Application](counter.livemd)
 
 <!-- livebook:{"break_markdown":true} -->
 

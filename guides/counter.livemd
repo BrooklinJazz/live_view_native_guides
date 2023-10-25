@@ -1,0 +1,20 @@
+# Counter
+
+## Overview
+
+In this guide, you'll learn how to create a simple counter application using LiveView Native.
+
+## Up Next
+
+<!-- navigation-start -->
+
+<div style="display: flex; align-items: center; width: 100%; justify-content: space-between; font-size: 1rem; color: #61758a; background-color: #f0f5f9; height: 4rem; padding: 0 1rem; border-radius: 1rem;">
+<div style="display: flex; margin-right: auto;">
+<i class="ri-arrow-left-fill"></i>
+<a style="display: flex; color: #61758a; margin-left: 1rem;" href="getting_started.livemd">Getting Started</a>
+</div>
+
+
+</div>
+
+<!-- navigation-end -->
