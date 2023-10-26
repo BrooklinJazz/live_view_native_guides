@@ -14,6 +14,11 @@ defmodule LiveViewNativeGuidesWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/", LiveViewNativeGuidesWeb do
+    pipe_through :browser
+    get "/", PageController, :index
+  end
+
   if Application.compile_env(:kino_live_view, :enabled) do
     scope "/" do
       pipe_through :browser

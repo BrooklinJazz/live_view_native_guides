@@ -2,9 +2,132 @@
 
 # Getting Started
 
+```elixir
+my_app_root = "../live_view_native_guides"
+
+Mix.install(
+  [
+    {:live_view_native_guides, path: my_app_root, env: :dev, runtime: true}
+  ],
+  config_path: Path.join(my_app_root, "config/config.exs"),
+  lockfile: Path.join(my_app_root, "mix.lock"),
+  force: true,
+  verbose: true
+)
+```
+
 ## Overview
 
+```elixir
+
+```
+
+```elixir
+# Application.put_all_env(
+#   kino_live_view_native: [
+#     {LiveViewNativeGuidesWeb.Endpoint,
+#      [
+#        http: [ip: {127, 0, 0, 1}, port: 5001],
+#        server: true,
+#        pubsub_server: LiveViewNativeGuidesWeb.PubSub,
+#        live_view: [signing_salt: "aaaaaaaa"],
+#        secret_key_base: String.duplicate("a", 64),
+#        live_reload: [
+#          patterns: [
+#            ~r/#{__ENV__.file |> String.split("#") |> hd()}$/
+#          ]
+#        ]
+#      ]}
+#   ]
+# )
+
+# Kino.start_child({Phoenix.PubSub, name: LiveViewNativeGuidesWeb.PubSub})
+# Kino.start_child(LiveViewNativeGuidesWeb.Endpoint)
+```
+
+<!-- livebook:{"attrs":{"action":":index","code":"defmodule Server.HomeLive do\n  use Phoenix.LiveView, layout: {__MODULE__, :layout}\n  use LiveViewNative.LiveView\n\n  def layout(assigns) do\n    ~H\"\"\"\n      <%= @inner_content %>\n    \"\"\"\n  end\n\n  @impl true\n  def render(%{platform_id: :swiftui} = assigns) do\n    ~SWIFTUI\"\"\"\n    <Text modifiers={@native |> foreground_style(primary: {:color, :mint})}>\n      Hello from LiveView Native!\n    </Text>\n    \"\"\"\n  end\n\n  def render(assigns) do\n    ~H\"\"\"\n    <div>Hello from LiveView!!</div>\n    \"\"\"\n  end\nend\n","path":"/"},"chunks":[[0,109],[111,501],[614,45],[661,49]],"kind":"Elixir.KinoLiveViewNative","livebook_object":"smart_cell"} -->
+
+```elixir
+require KinoLiveViewNative.Livebook
+import KinoLiveViewNative.Livebook
+import Kernel, except: [defmodule: 2]
+
+defmodule Server.HomeLive do
+  use Phoenix.LiveView, layout: {__MODULE__, :layout}
+  use LiveViewNative.LiveView
+
+  def layout(assigns) do
+    ~H"""
+      <%= @inner_content %>
+    """
+  end
+
+  @impl true
+  def render(%{platform_id: :swiftui} = assigns) do
+    ~SWIFTUI"""
+    <Text modifiers={@native |> foreground_style(primary: {:color, :mint})}>
+      Hello from LiveView Native!
+    </Text>
+    """
+  end
+
+  def render(assigns) do
+    ~H"""
+    <div>Hello from LiveView!!</div>
+    """
+  end
+end
+|> KinoLiveViewNative.register("/", ":index")
+
+import KinoLiveViewNative.Livebook, only: []
+:ok
+```
+
 In this guide, you'll learn how to setup **LiveView Native Guides** and build a simple hello world application that runs on both the web and iOS.
+
+```elixir
+Process.alive?(LiveViewNativeGuides.Supervisor)
+```
+
+```elixir
+# app_name = Keyword.get(opts, :app_name, "LiveView Native")
+# port = Keyword.get(opts, :port, 5001)
+
+# Application.put_all_env(
+#   # live_view_native: [
+#   #   {:platforms, [LiveViewNativeSwiftUi.Platform]},
+#   #   {LiveViewNativeSwiftUi.Platform, [app_name: app_name]}
+#   # ],
+#   live_view_native_guides: [
+#     {Server.Endpoint,
+#      [
+#        http: [ip: {127, 0, 0, 1}, port: port],
+#        server: true,
+#        pubsub_server: Server.PubSub,
+#        live_view: [signing_salt: "aaaaaaaa"],
+#        secret_key_base: String.duplicate("a", 64),
+#        live_reload: [
+#          patterns: [
+#            ~r/#{__ENV__.file |> String.split("#") |> hd()}$/
+#          ]
+#        ]
+#      ]}
+#   ]
+# )
+
+# Kino.start_child({Phoenix.PubSub, name: Server.PubSub})
+# Kino.start_child(Server.Endpoint)
+```
+
+```elixir
+# Kino.start_child({Phoenix.PubSub, name: LiveViewNativeGuides.PubSub})
+Kino.start_child(LiveViewNativeGuidesWeb.Endpoint)
+```
+
+```elixir
+Process.exit(Process.whereis(LiveViewNativeGuides.PubSub), :kill)
+# Process.exit(Process.whereis(LiveViewNativeGuides.Endpoint), :kill)
+```
 
 ## Setup
 
